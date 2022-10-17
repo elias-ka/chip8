@@ -1,17 +1,12 @@
 #![allow(dead_code)]
 
-use std::{env, time::Duration};
+use std::env;
 
 use anyhow::Result;
 use chip8::Chip8;
-use display::Display;
-use sdl2::event::Event;
+use sdl2::{event::Event, pixels::Color, rect::Rect, render::Canvas, video::Window};
 
-mod audio;
 mod chip8;
-mod display;
-mod keypad;
-mod opcode;
 
 fn main() -> Result<()> {
     let args: Vec<_> = env::args().collect();
@@ -29,10 +24,12 @@ fn main() -> Result<()> {
         .build()
         .unwrap();
 
-    let display = Display::new(window)?;
+    let mut canvas = window.into_canvas().present_vsync().build().unwrap();
+    canvas.clear();
+    canvas.present();
 
-    let mut chip8 = Chip8::new(display);
-    chip8.run("roms/programs/IBM Logo.ch8")?;
+    let mut chip8 = Chip8::new();
+    chip8.load_rom(&args[1])?;
 
     let mut event_pump = sdl_ctx.event_pump().unwrap();
     'running: loop {
@@ -40,21 +37,43 @@ fn main() -> Result<()> {
             match event {
                 Event::Quit { .. } => break 'running,
                 Event::KeyDown { scancode, .. } => {
-                    chip8.keypad.set_key(scancode.unwrap(), true);
+                    chip8.set_key(scancode.unwrap(), true);
                 }
                 Event::KeyUp { scancode, .. } => {
-                    chip8.keypad.set_key(scancode.unwrap(), false);
+                    chip8.set_key(scancode.unwrap(), false);
                 }
-                _ => {}
+                _ => (),
             }
         }
 
         for _ in 0..10 {
-            chip8.execute_instruction()
+            chip8.tick();
         }
 
-        chip8.tick_timers()
+        chip8.tick_timers();
+        draw_screen(&chip8, &mut canvas)
     }
 
     Ok(())
+}
+
+fn draw_screen(chip8: &Chip8, canvas: &mut Canvas<Window>) {
+    canvas.set_draw_color(Color::RGB(0, 0, 0));
+    canvas.clear();
+
+    canvas.set_draw_color(Color::RGB(255, 255, 255));
+    for (i, pixel) in chip8.display.iter().enumerate() {
+        if *pixel {
+            canvas
+                .fill_rect(Rect::new(
+                    (i % 64) as i32 * 10,
+                    (i / 64) as i32 * 10,
+                    10,
+                    10,
+                ))
+                .unwrap();
+        }
+    }
+
+    canvas.present();
 }
