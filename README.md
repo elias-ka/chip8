@@ -35,11 +35,25 @@ A 0 B F        Z X C V
 ```
 
 # Demos
-<video src="https://github.com/elias-ka/chip8/assets/48407293/0d26903b-2521-40e4-bdba-e7a5b9c45e2f"></video>
-<video src="https://github.com/elias-ka/chip8/assets/48407293/1d68fe0d-ef9b-4892-b40b-d8598117fdc6"></video>
+![ping_pong_demo](https://github.com/elias-ka/chip8/assets/48407293/15ae2c4f-225d-4a50-9a87-b10c3dbe1f43)
+![zero_demo](https://github.com/elias-ka/chip8/assets/48407293/b0350b20-d81e-425a-97a1-6b7df675e0fd)
+
+
+
+
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 # Acknowledgments
 The Chip8 system was originally designed by Joseph Weisbecker.
+
+
+
+
+
+
+
+
+
+
