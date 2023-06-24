@@ -35,8 +35,8 @@ A 0 B F        Z X C V
 ```
 
 # Demos
-<video src="./demos/ping_pong_demo.mp4"></video>
-<video src="./demos/zero_demo.mp4"></video>
+<video src="https://github.com/elias-ka/chip8/assets/48407293/0d26903b-2521-40e4-bdba-e7a5b9c45e2f"></video>
+<video src="https://github.com/elias-ka/chip8/assets/48407293/1d68fe0d-ef9b-4892-b40b-d8598117fdc6"></video>
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for more details.
