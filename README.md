@@ -1,12 +1,12 @@
-# Overview
-This is a Chip8 interpreter implemented in the Rust programming language. It supports executing Chip8 programs (file extension .ch8), but it's important to note that not all programs may work as expected, and audio is not supported.
+## Overview
+A CHIP-8 interpreter implemented in Rust. It supports executing CHIP-8 programs (file extension .ch8), but keep in mind that not all programs may work as expected, and audio is not supported.
 
 ![Screenshot of Chip8 interpreter running the IBM logo](./demos/IBM_logo_demo.png)
 
-# Getting Started
-To run the Chip8 interpreter, you'll need to have the Rust programming language installed on your system. You can download rustup from https://rustup.rs/.
+## Getting Started
+To run the Chip8 interpreter, you'll need to have Rust installed on your system. You can download rustup from https://rustup.rs/.
 
-Since SDL2 is compiled from source, you will need a C compiler (like `gcc`, `clang`, or `MSVC`) along with CMake.
+Since SDL2 is compiled from source, you'll need a C compiler (like `gcc`, `clang`, or `MSVC`) along with CMake.
 
 Once the prerequisities are installed, follow these steps:
 
@@ -22,7 +22,7 @@ git clone --recurse-submodules https://github.com/elias-ka/chip8
 cargo run --release -- <path-to-chip8-program>
 ```
 
-# Controls
+## Controls
 The Chip8 system originally used a 16-key hexadecimal keypad. However, this interpreter maps the original keypad to modern keyboard keys as follows:
 
 ```
@@ -34,18 +34,16 @@ Chip8 Keypad   Keyboard
 A 0 B F        Z X C V
 ```
 
-# Demos
+## Demos
+### Ping Pong
 ![ping_pong_demo](https://github.com/elias-ka/chip8/assets/48407293/15ae2c4f-225d-4a50-9a87-b10c3dbe1f43)
+### Bouncing sprites
 ![zero_demo](https://github.com/elias-ka/chip8/assets/48407293/b0350b20-d81e-425a-97a1-6b7df675e0fd)
 
-
-
-
-
-# License
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-# Acknowledgments
+## Acknowledgments
 The Chip8 system was originally designed by Joseph Weisbecker.
 
 
